@@ -6,13 +6,11 @@ fun example() {
 
     result == listOf('a', 'b', 'c', '1', '2')
 }
+// Return all products this customer has ordered
+val Customer.orderedProducts: Set<Product> get() = orders.flatMap(Order::products).toSet()
 
-val Customer.orderedProducts: Set<Product> get() {
-    // Return all products this customer has ordered
-    todoCollectionTask()
-}
 
-val Shop.allOrderedProducts: Set<Product> get() {
-    // Return all products that were ordered by at least one customer
-    todoCollectionTask()
-}
+// Return all products that were ordered by at least one customer
+val Shop.allOrderedProducts: Set<Product> get() = customers.flatMap(Customer::orderedProducts).toSet()
+
+
