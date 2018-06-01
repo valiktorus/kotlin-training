@@ -35,14 +35,14 @@ fun renderProductTable(): String {
             }
             val products = getProducts()
             products.forEachIndexed { index, product ->
-                tr (getTitleColor()){
-                    td (getCellColor(index, 0)){
+                tr (color = getTitleColor()){
+                    td (color = getCellColor(index, 0)){
                         text(product.description)
                     }
-                    td (getCellColor(index, 1)){
+                    td (color = getCellColor(index, 1)){
                         text(product.price)
                     }
-                    td (getCellColor(index, 2)){
+                    td (color = getCellColor(index, 2)){
                         text(product.popularity)
                     }
                 }
