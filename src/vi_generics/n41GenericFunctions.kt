@@ -18,13 +18,16 @@ fun task41(): Nothing = TODO(
             l.toCollection(HashSet<Int>())
         }
 )
+fun <T : MutableCollection<E>, E> Collection<E>.partitionTo(firstCollection: T, secondCollection: T, predicate: (E) -> Boolean)
+        : Pair<T, T> {
+    this.forEach { if (predicate(it)) firstCollection.add(it) else secondCollection.add(it) }
+    return Pair(firstCollection, secondCollection)
+}
 
 fun List<String>.partitionWordsAndLines(): Pair<List<String>, List<String>> {
-    task41()
-//    return partitionTo(ArrayList<String>(), ArrayList()) { s -> !s.contains(" ") }
+    return partitionTo(ArrayList<String>(), ArrayList()) { s -> !s.contains(" ") }
 }
 
 fun Set<Char>.partitionLettersAndOtherSymbols(): Pair<Set<Char>, Set<Char>> {
-    task41()
-//    return partitionTo(HashSet<Char>(), HashSet()) { c -> c in 'a'..'z' || c in 'A'..'Z'}
+    return partitionTo(HashSet<Char>(), HashSet()) { c -> c in 'a'..'z' || c in 'A'..'Z'}
 }
